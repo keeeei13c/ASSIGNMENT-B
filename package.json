@@ -9,16 +9,22 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@google-cloud/vision": "^2.3.5",
+    "@material-ui/core": "^4.12.1",
+    "@material-ui/icons": "^4.11.2",
     "axios": "^0.21.1",
+    "dotenv": "^10.0.0",
     "next": "11.0.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "swr": "^0.5.6"
   },
   "devDependencies": {
-    "dotenv": "^10.0.0",
     "eslint": "7.30.0",
     "eslint-config-next": "11.0.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "prettier": "^2.3.2",
     "terser-webpack-plugin": "^5.1.4",
     "webpack": "^5.44.0"
   }
