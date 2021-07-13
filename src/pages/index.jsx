@@ -1,41 +1,105 @@
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import axios from 'axios'
 
-function Home() {
+import FindInPageIcon from '@material-ui/icons/FindInPage'
+import { Button, TextField, Typography, Divider } from '@material-ui/core'
+
+const Home = () => {
   const [url, setUrl] = useState('')
-  const [imageUrl, setImageUrl] = useState('')
   const [labelData, setLabelData] = useState([])
-  
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null)
+
   const retentionUrl = (e) => {
     setUrl(() => e.target.value)
   }
 
-  const buttonEvent = async () => {
-    const imageUrl = await axios.get(url)
-    setImageUrl(imageUrl)
-
-    console.log(imageUrl)
-
-  }
-  const getVision = async () => {
+  const getVision = useCallback(async () => {
     try {
-      const response = await axios.post('/api/vision', {
+      const res = await axios.post('/api/vision', {
         url: url,
       })
-      console.log(response.data)
-      setLabelData(response.data)
+      setLabelData(res.data)
     } catch (error) {
-      console.error(error)
+      setError(error)
     }
-  }
+    setLoading(false)
+  }, [url])
 
+  if (error) {
+    return <div>{error.message}</div>
+  }
+  if (loading) {
+    return <div>loading...</div>
+  }
   return (
     <>
-      <p>url:{ url}</p>
-      <input value={url} onChange={retentionUrl} type={url} />
-      <button onClick={getVision}>
-        analyze
-      </button>
+      <Typography
+        style={{
+          fontFamily: 'roboto',
+          margin: '0 20px 20px',
+        }}
+        variant='h5'>
+        Example App / Exam v2
+      </Typography>
+
+      <TextField
+        style={{
+          marginLeft: '20px',
+        }}
+        id='outlined-required'
+        label='Image URL '
+        variant='outlined'
+        size='small'
+        value={url}
+        onChange={retentionUrl}
+        type={url}
+      />
+      <Button
+        style={{
+          fontFamily: 'roboto',
+          marginLeft: '10px',
+          backgroundColor: '#3f51b5',
+          color: 'white',
+        }}
+        type='submit'
+        variant='contained'
+        onClick={getVision}>
+        <FindInPageIcon
+          style={{
+            color: 'white',
+          }}
+        />
+        ANALYZE
+      </Button>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Label</th>
+            <th>Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          {labelData.length !== 0 &&
+            labelData.data.map((label) => {
+              return (
+                <>
+                  <tr>
+                    <td key={label.description}>
+                      {label.description}
+                    </td>
+
+                    <td key={label.score}>
+                      {`${(label.score * 100).toFixed(4)} %`}
+                    </td>
+                  </tr>
+                  <Divider />
+                </>
+              )
+            })}
+        </tbody>
+      </table>
     </>
   )
 }
