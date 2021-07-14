@@ -122,4 +122,10 @@ const Home = () => {
   )
 }
 
+export async function getStaticProps() {
+  const siteData = await someService({
+    GOOGLE_APPLICATION_CREDENTIALS: process.env.GOOGLE_APPLICATION_CREDENTIALS,
+  })
+}
+
 export default Home
