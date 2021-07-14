@@ -3,7 +3,3 @@ GOOGLE_APPLICATION_CREDENTIALS=/Users/fukudakei/Desktop/vision-api.json
 [build]
  command = "npm run build && npm run export"
  publish = "out"
- [[plugins]]
-  package = "@netlify/plugin-nextjs"
-[[plugins]]
-  package = "netlify-plugin-cache-nextjs"
