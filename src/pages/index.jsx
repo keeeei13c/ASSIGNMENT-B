@@ -26,6 +26,9 @@ const useStyles = makeStyles({
     backgroundColor: '#3f51b5',
     color: 'white',
   },
+  table: {
+    maxWidth: 500,
+  },
 })
 
 const Home = () => {
@@ -78,13 +81,15 @@ const Home = () => {
         <Button
           className={classes.button}
           variant='contained'
-          onClick={getVision}>
+          onClick={getVision}
+  
+        >
           <FindInPageIcon />
           ANALYZE
         </Button>
 
         <TableContainer>
-          <Table>
+          <Table className={classes.table}>
             <TableHead>
               <TableRow>
                 {/* <TableCell>Label</TableCell>
