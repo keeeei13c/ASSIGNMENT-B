@@ -1,5 +1,10 @@
 [build]
- command = "npm run build && npm run export"
- publish = "out"
+command = "npm run build && npm run export"
+publish = "out"
 [build.environment]
 GOOGLE_APPLICATION_CREDENTIALS=process.env.GOOGLE_APPLICATION_CREDENTIALS
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
