@@ -92,8 +92,8 @@ const Home = () => {
           <Table className={classes.table}>
             <TableHead>
               <TableRow>
-                {/* <TableCell>Label</TableCell>
-                <TableCell>Score</TableCell> */}
+                <TableCell>Label</TableCell>
+                <TableCell>Score</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
