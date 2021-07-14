@@ -11,7 +11,6 @@ import TableContainer from '@material-ui/core/TableContainer'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 
-
 const useStyles = makeStyles({
   title: {
     margin: '20px',
@@ -67,7 +66,9 @@ const Home = () => {
   return (
     <>
       <Container>
-        <Typography className={classes.title} variant='h5'>
+        <Typography
+          className={classes.title}
+          variant='h5'>
           Example App / Exam v2
         </Typography>
 
