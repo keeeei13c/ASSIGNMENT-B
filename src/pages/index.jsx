@@ -2,9 +2,34 @@ import { useState, useCallback } from 'react'
 import axios from 'axios'
 
 import FindInPageIcon from '@material-ui/icons/FindInPage'
-import { Button, TextField, Typography, Divider } from '@material-ui/core'
+import { Button, TextField, Typography,Container } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
+import Table from '@material-ui/core/Table'
+import TableBody from '@material-ui/core/TableBody'
+import TableCell from '@material-ui/core/TableCell'
+import TableContainer from '@material-ui/core/TableContainer'
+import TableHead from '@material-ui/core/TableHead'
+import TableRow from '@material-ui/core/TableRow'
+
+
+const useStyles = makeStyles({
+  title: {
+    margin: '20px',
+  },
+  textField: {
+    marginLeft: '20px',
+    marginBottom: '40px',
+  },
+  button: {
+    marginLeft: '10px',
+    padding: '7.5px',
+    backgroundColor: '#3f51b5',
+    color: 'white',
+  },
+})
 
 const Home = () => {
+  const classes = useStyles()
   const [url, setUrl] = useState('')
   const [labelData, setLabelData] = useState([])
   const [loading, setLoading] = useState(false)
@@ -32,74 +57,60 @@ const Home = () => {
   if (loading) {
     return <div>loading...</div>
   }
+
   return (
     <>
-      <Typography
-        style={{
-          fontFamily: 'roboto',
-          margin: '0 20px 20px',
-        }}
-        variant='h5'>
-        Example App / Exam v2
-      </Typography>
+      <Container>
+        <Typography className={classes.title} variant='h5'>
+          Example App / Exam v2
+        </Typography>
 
-      <TextField
-        style={{
-          marginLeft: '20px',
-        }}
-        id='outlined-required'
-        label='Image URL '
-        variant='outlined'
-        size='small'
-        value={url}
-        onChange={retentionUrl}
-        type={url}
-      />
-      <Button
-        style={{
-          fontFamily: 'roboto',
-          marginLeft: '10px',
-          backgroundColor: '#3f51b5',
-          color: 'white',
-        }}
-        type='submit'
-        variant='contained'
-        onClick={getVision}>
-        <FindInPageIcon
-          style={{
-            color: 'white',
-          }}
+        <TextField
+          className={classes.textField}
+          id='outlined-required'
+          label='Image URL '
+          variant='outlined'
+          size='small'
+          onChange={retentionUrl}
+          value={url}
+          type={url}
         />
-        ANALYZE
-      </Button>
+        <Button
+          className={classes.button}
+          variant='contained'
+          onClick={getVision}>
+          <FindInPageIcon />
+          ANALYZE
+        </Button>
 
-      <table>
-        <thead>
-          <tr>
-            <th>Label</th>
-            <th>Score</th>
-          </tr>
-        </thead>
-        <tbody>
-          {labelData.length !== 0 &&
-            labelData.data.map((label) => {
-              return (
-                <>
-                  <tr>
-                    <td key={label.description}>
-                      {label.description}
-                    </td>
-
-                    <td key={label.score}>
-                      {`${(label.score * 100).toFixed(4)} %`}
-                    </td>
-                  </tr>
-                  <Divider />
-                </>
-              )
-            })}
-        </tbody>
-      </table>
+        <TableContainer>
+          <Table>
+            <TableHead>
+              <TableRow>
+                {/* <TableCell>Label</TableCell>
+                <TableCell>Score</TableCell> */}
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {labelData.length !== 0 &&
+                labelData.data.map((label) => {
+                  return (
+                    <>
+                      <TableRow>
+                        <TableCell key={label.description}>
+                          {label.description}
+                        </TableCell>
+                        <TableCell key={label.score}>
+                          {`${(label.score * 100).toFixed(4)} %`}
+                        </TableCell>
+                      </TableRow>
+                    </>
+                  )
+                })}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Container>
     </>
   )
 }
