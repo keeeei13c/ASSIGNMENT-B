@@ -29,7 +29,7 @@ const useStyles = makeStyles({
     maxWidth: 500,
   },
   tableHead:{
-    fontWeight: 'bold'
+    fontWeight: '500'
   }
 })
 
