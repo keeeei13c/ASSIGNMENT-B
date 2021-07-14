@@ -1,5 +1,6 @@
 [build.environment]
-GOOGLE_APPLICATION_CREDENTIALS=/Users/fukudakei/Desktop/vision-api.json
+GOOGLE_APPLICATION_CREDENTIALS=process.env.GOOGLE_APPLICATION_CREDENTIALS
 [build]
  command = "npm run build && npm run export"
  publish = "out"
+
