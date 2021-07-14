@@ -12,6 +12,7 @@ import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 
 const useStyles = makeStyles({
+  GOOGLE_APPLICATION_CREDENTIALS: process.env.GOOGLE_APPLICATION_CREDENTIALS,
   title: {
     margin: '20px',
   },
@@ -28,9 +29,9 @@ const useStyles = makeStyles({
   table: {
     maxWidth: 500,
   },
-  tableHead:{
-    fontWeight: '500'
-  }
+  tableHead: {
+    fontWeight: '500',
+  },
 })
 
 const Home = () => {
@@ -122,10 +123,5 @@ const Home = () => {
   )
 }
 
-export async function getStaticProps() {
-  const siteData = await someService({
-    GOOGLE_APPLICATION_CREDENTIALS: process.env.GOOGLE_APPLICATION_CREDENTIALS,
-  })
-}
 
 export default Home
