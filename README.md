@@ -9,5 +9,6 @@ npm run dev
 ```
 
 ## feature
-textareaに解析したい画像URLを入力してください。/n
+textareaに解析したい画像URLを入力してください。
+
 その後ANALYZEというボタンをクリックすると結果が表示されます。
