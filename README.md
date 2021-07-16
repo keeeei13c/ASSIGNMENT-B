@@ -1,10 +1,8 @@
  
 # Usage
  
-DEMOの実行方法など、"hoge"の基本的な使い方を説明する
- 
 ```bash
-git clone https://github.com/hoge/~
+git clone https://github.com/keeeei13c/ASSIGNMENT-B.git
 cd ASSIGNMENT-B
 npm install
 npm run dev
