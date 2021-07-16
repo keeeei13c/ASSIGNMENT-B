@@ -8,6 +8,6 @@ npm install
 npm run dev
 ```
 
-## 画像解析
+## feature
 textareaに解析したい画像URLを入力してください。
- その後ANALYZEというボタンをクリックすると結果が表示されます。
+その後ANALYZEというボタンをクリックすると結果が表示されます。
