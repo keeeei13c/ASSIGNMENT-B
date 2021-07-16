@@ -63,12 +63,11 @@ const Home = () => {
     return <div>loading...</div>
   }
 
+
   return (
     <>
       <Container>
-        <Typography
-          className={classes.title}
-          variant='h5'>
+        <Typography className={classes.title} variant='h5'>
           Example App / Exam v2
         </Typography>
 
