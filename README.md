@@ -3,8 +3,11 @@
  
 ```bash
 git clone https://github.com/keeeei13c/ASSIGNMENT-B.git
+
 cd ASSIGNMENT-B
+
 npm install
+
 npm run dev
 ```
 
